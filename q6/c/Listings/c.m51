@@ -1,0 +1,138 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    12/17/2023  07:38:05  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\q6c.obj TO .\Objects\c PRINT (.\Listings\c.m51) CODE (0X0000-0X0FFF)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\q6c.obj (Q6C)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?COPY)
+
+
+LINK MAP OF MODULE:  .\Objects\c (Q6C)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000CH     UNIT         _DATA_GROUP_
+            IDATA   0014H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     00F6H     UNIT         ?C?LIB_CODE
+            CODE    08F6H     006CH     UNIT         ?PR?MAIN?Q6C
+            CODE    0962H     000DH     UNIT         ?PR?DELAY?Q6C
+            CODE    096FH     000CH     UNIT         ?C_C51STARTUP
+            CODE    097BH     000AH     UNIT         ?CO?Q6C
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\c (Q6C)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?Q6C
+
+?PR?MAIN?Q6C                   0008H    000CH
+  +--> ?CO?Q6C
+  +--> ?PR?DELAY?Q6C
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\c (Q6C)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        Q6C
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  12/17/2023  07:38:05  PAGE 2
+
+
+  C:0962H         PUBLIC        delay
+  C:08F6H         PUBLIC        main
+  C:097BH         SYMBOL        _?ix1000
+  -------         PROC          DELAY
+  -------         DO            
+  D:0007H         SYMBOL        R7
+  D:0006H         SYMBOL        R6
+  D:0005H         SYMBOL        R1
+  -------         ENDDO         
+  C:0962H         LINE#         6
+  C:0962H         LINE#         7
+  C:0964H         LINE#         8
+  C:0966H         LINE#         9
+  C:0968H         LINE#         11
+  C:0968H         LINE#         12
+  C:0968H         LINE#         13
+  C:0968H         LINE#         14
+  C:096AH         LINE#         15
+  C:096AH         LINE#         16
+  C:096CH         LINE#         17
+  C:096CH         LINE#         18
+  C:096EH         LINE#         19
+  C:096EH         LINE#         20
+  -------         ENDPROC       DELAY
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        R1
+  D:0007H         SYMBOL        R2
+  D:0005H         SYMBOL        R4
+  D:0006H         SYMBOL        A
+  D:0009H         SYMBOL        array
+  -------         DO            
+  D:0013H         SYMBOL        temp
+  -------         ENDDO         
+  -------         ENDDO         
+  C:08F6H         LINE#         22
+  C:08F6H         LINE#         25
+  C:0909H         LINE#         27
+  C:0909H         LINE#         28
+  C:090FH         LINE#         29
+  C:0911H         LINE#         30
+  C:0913H         LINE#         31
+  C:0916H         LINE#         33
+  C:0916H         LINE#         34
+  C:091DH         LINE#         35
+  C:091FH         LINE#         36
+  C:092AH         LINE#         38
+  C:092FH         LINE#         39
+  C:0931H         LINE#         40
+  C:093FH         LINE#         41
+  C:0946H         LINE#         42
+  C:0948H         LINE#         43
+  C:0948H         LINE#         44
+  C:094BH         LINE#         45
+  C:094EH         LINE#         47
+  C:0958H         LINE#         48
+  C:095BH         LINE#         49
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  12/17/2023  07:38:05  PAGE 3
+
+
+  C:095EH         LINE#         50
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        Q6C
+
+  -------         MODULE        ?C?COPY
+  C:08D0H         PUBLIC        ?C?COPY
+  -------         ENDMOD        ?C?COPY
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0083H BYTE ( 6%) *
+******************************************************************************
+
+Program Size: data=21.0 xdata=0 code=392
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

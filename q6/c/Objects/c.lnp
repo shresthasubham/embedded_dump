@@ -1,0 +1,3 @@
+".\Objects\q6c.obj" 
+TO ".\Objects\c" 
+PRINT(".\Listings\c.m51") CODE( 0X0000-0X0FFF )

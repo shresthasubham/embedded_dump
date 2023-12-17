@@ -1,0 +1,90 @@
+A51 MACRO ASSEMBLER  Q5                                                                   12/15/2023 12:44:28 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\q5.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE q5.asm SET(SMALL) DEBUG PRINT(.\Listings\q5.lst) OBJECT(.\Objects\q5.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1             ORG 00H
+0000 7950              2     START:  MOV R1, #50H
+0002 77D6              3             MOV @R1, #0D6H
+0004 09                4             INC R1
+0005 77F2              5             MOV @R1, #0F2H
+0007 09                6             INC R1
+0008 77E4              7             MOV @R1, #0E4H
+000A 09                8             INC R1
+000B 77A8              9             MOV @R1, #0A8H
+000D 09               10             INC R1
+000E 77CE             11             MOV @R1, #0CEH
+0010 09               12             INC R1
+0011 77B9             13             MOV @R1, #0B9H
+0013 09               14             INC R1
+0014 77FA             15             MOV @R1, #0FAH
+0016 09               16             INC R1
+0017 77AE             17             MOV @R1, #0AEH
+0019 09               18             INC R1
+001A 77BA             19             MOV @R1, #0BAH
+001C 09               20             INC R1
+001D 77CC             21             MOV @R1, #0CCH
+001F 7950             22             MOV R1, #050H
+0021 7A00             23             MOV R2, #00H    ;largest value
+0023 7BFF             24             MOV R3, #0FFH   ;smallest value
+0025 7C0A             25             MOV R4, #10
+0027 E7               26     CHECK:  MOV A, @R1
+0028 C3               27             CLR C
+0029 9A               28             SUBB A, R2
+002A 4002             29             JC NOTLARGE
+002C E7               30             MOV A, @R1
+002D FA               31             MOV R2, A
+002E E7               32     NOTLARGE:       MOV A, @R1
+002F C3               33             CLR C
+0030 9B               34             SUBB A, R3
+0031 5002             35             JNC NOTSMALL
+0033 E7               36             MOV A, @R1
+0034 FB               37             MOV R3, A
+0035 09               38     NOTSMALL:       INC R1
+0036 DCEF             39             DJNZ R4, CHECK
+0038 EA               40             MOV A, R2
+0039 F580             41             MOV P0, A
+003B 1144             42             CALL DELAY
+003D EB               43             MOV A, R3
+003E F580             44             MOV P0, A
+0040 1144             45             ACALL DELAY
+0042 80BC             46             SJMP START
+                      47             
+0044 7F07             48     DELAY:  MOV R7, #7
+                      49     
+0046 7E01             50     HERE1:  MOV R6, #1
+0048 7902             51     HERE2:  MOV R1, #2
+004A D9FE             52     HERE3:  DJNZ R1, HERE3
+004C DEFC             53             DJNZ R6, HERE3
+004E DFFA             54             DJNZ R7, HERE3
+0050 22               55             RET
+                      56             
+                      57             END
+A51 MACRO ASSEMBLER  Q5                                                                   12/15/2023 12:44:28 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+CHECK. . . . . . .  C ADDR   0027H   A   
+DELAY. . . . . . .  C ADDR   0044H   A   
+HERE1. . . . . . .  C ADDR   0046H   A   
+HERE2. . . . . . .  C ADDR   0048H   A   
+HERE3. . . . . . .  C ADDR   004AH   A   
+NOTLARGE . . . . .  C ADDR   002EH   A   
+NOTSMALL . . . . .  C ADDR   0035H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+START. . . . . . .  C ADDR   0000H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

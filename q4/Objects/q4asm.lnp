@@ -1,0 +1,3 @@
+".\Objects\q4.obj" 
+TO ".\Objects\q4asm" 
+PRINT(".\Listings\q4asm.m51") CODE( 0X0000-0X0FFF )

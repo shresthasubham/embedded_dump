@@ -1,0 +1,100 @@
+A51 MACRO ASSEMBLER  Q6                                                                   12/17/2023 01:38:38 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\q6.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE q6.asm SET(SMALL) DEBUG PRINT(.\Listings\q6.lst) OBJECT(.\Objects\q6.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1             ORG 00H
+  000A                 2             NUMS EQU 10
+  0060                 3             BASE EQU 60H
+                       4             ;; storing the value
+0000 7960              5     START:  MOV R1, #BASE
+0002 77A5              6             MOV @R1, #0A5H
+0004 09                7             INC R1
+0005 77FD              8             MOV @R1, #0FDH
+0007 09                9             INC R1
+0008 7767             10             MOV @R1, #067H
+000A 09               11             INC R1
+000B 7742             12             MOV @R1, #042H
+000D 09               13             INC R1
+000E 77DF             14             MOV @R1, #0DFH
+0010 09               15             INC R1
+0011 779A             16             MOV @R1, #09AH
+0013 09               17             INC R1
+0014 7784             18             MOV @R1, #084H
+0016 09               19             INC R1
+0017 771B             20             MOV @R1, #01BH
+0019 09               21             INC R1
+001A 77C7             22             MOV @R1, #0C7H
+001C 09               23             INC R1
+001D 7731             24             MOV @R1, #031H
+                      25             
+                      26             ;MOV R0, #BASE
+001F 7A09             27             MOV R2, #NUMS-1 ;counter
+0021 EA               28     l1:     MOV A, R2       ;setting the counter which decreases by 1 in every loop
+0022 FC               29             MOV R4, A
+0023 7960             30             MOV R1,#BASE           ;pointer to array
+0025 E9               31     l2:     MOV A, R1              ;reading the array value
+0026 09               32             INC R1                  ;moving to the adjacent value
+0027 C3               33             CLR C                   ;clearing the carry content
+0028 99               34             SUBB A, R1             ;subtracting first with second
+0029 5004             35             JNC LARGE                ;escaping if first is smaller than second
+002B E9               36             MOV A, R1               ;swapping the values
+002C 19               37             DEC R1
+002D C9               38             XCH A, R1
+002E 09               39             INC R1
+                      40             ;; falgs
+002F DCF4             41     LARGE:  DJNZ R4, l2             ;looping till the counter
+                      42             ;; flags checking
+0031 DAEE             43             DJNZ R2, l1
+                      44     
+0033 7860             45             MOV R0, #BASE
+0035 790A             46             MOV R1, #NUMS
+0037 E8               47     NEXT:   MOV A, R0
+0038 F580             48             MOV P0, A
+003A 08               49             INC R0
+003B 1141             50             CALL DELAY
+003D D9F8             51             DJNZ R1, NEXT
+003F 80BF             52             SJMP START
+                      53             
+0041 7F07             54     DELAY:  MOV R7, #7
+                      55     
+0043 7E01             56     HERE1:  MOV R6, #1
+0045 7902             57     HERE2:  MOV R1, #2
+A51 MACRO ASSEMBLER  Q6                                                                   12/17/2023 01:38:38 PAGE     2
+
+0047 D9FE             58     HERE3:  DJNZ R1, HERE3
+0049 DEFC             59             DJNZ R6, HERE3
+004B DFFA             60             DJNZ R7, HERE3
+004D 22               61             RET
+                      62             END
+A51 MACRO ASSEMBLER  Q6                                                                   12/17/2023 01:38:38 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BASE . . . . . . .  N NUMB   0060H   A   
+DELAY. . . . . . .  C ADDR   0041H   A   
+HERE1. . . . . . .  C ADDR   0043H   A   
+HERE2. . . . . . .  C ADDR   0045H   A   
+HERE3. . . . . . .  C ADDR   0047H   A   
+L1 . . . . . . . .  C ADDR   0021H   A   
+L2 . . . . . . . .  C ADDR   0025H   A   
+LARGE. . . . . . .  C ADDR   002FH   A   
+NEXT . . . . . . .  C ADDR   0037H   A   
+NUMS . . . . . . .  N NUMB   000AH   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+START. . . . . . .  C ADDR   0000H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
