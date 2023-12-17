@@ -1,0 +1,61 @@
+A51 MACRO ASSEMBLER  Q8                                                                   12/15/2023 12:56:47 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\q8.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE q8.asm SET(SMALL) DEBUG PRINT(.\Listings\q8.lst) OBJECT(.\Objects\q8.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1             ORG 00H
+  0005                 2             NUMS EQU 05H
+                       3             ;; storing value
+0000 7B05              4     START:  MOV R3, #NUMS
+0002 1117              5             CALL FACT
+0004 F580              6             MOV P0, A
+0006 110A              7             CALL DELAY
+0008 80F6              8             SJMP START
+                       9             
+000A 7F07             10     DELAY:  MOV R7, #7
+                      11     
+000C 7E01             12     HERE1:  MOV R6, #1
+000E 7902             13     HERE2:  MOV R1, #2
+0010 D9FE             14     HERE3:  DJNZ R1, HERE3
+0012 DEFC             15             DJNZ R6, HERE3
+0014 DFFA             16             DJNZ R7, HERE3
+0016 22               17             RET
+                      18             
+0017 7401             19     FACT:   MOV A, #1
+0019 8BF0             20     NEX:    MOV B, R3
+001B A4               21             MUL AB
+001C DBFB             22             DJNZ R3, NEX
+001E 22               23             RET
+                      24             
+                      25             END
+                             
+                             
+A51 MACRO ASSEMBLER  Q8                                                                   12/15/2023 12:56:47 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+DELAY. . . . . . .  C ADDR   000AH   A   
+FACT . . . . . . .  C ADDR   0017H   A   
+HERE1. . . . . . .  C ADDR   000CH   A   
+HERE2. . . . . . .  C ADDR   000EH   A   
+HERE3. . . . . . .  C ADDR   0010H   A   
+NEX. . . . . . . .  C ADDR   0019H   A   
+NUMS . . . . . . .  N NUMB   0005H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+START. . . . . . .  C ADDR   0000H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,85 @@
+A51 MACRO ASSEMBLER  Q7                                                                   12/17/2023 01:35:53 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\q7.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE q7.asm SET(SMALL) DEBUG PRINT(.\Listings\q7.lst) OBJECT(.\Objects\q7.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1             ORG 00H
+  0040                 2             BASE EQU 40H
+  0020                 3             NUMS EQU 20H
+                       4             ;; storing value
+0000 7940              5     START:  MOV R1, #BASE
+0002 7A20              6             MOV R2, #20H
+0004 7400              7             MOV A, #00H
+0006 F7                8     NNUM:   MOV @R1, A
+0007 09                9             INC R1
+0008 04               10             INC A
+0009 DAFB             11             DJNZ R2, NNUM
+                      12             ;; Initialization
+000B                  13     PRIME:
+000B 7841             14             MOV R0, #BASE+1
+000D 7920             15             MOV R1, #NUMS
+000F E8               16     NEXT:   MOV A, R0
+                      17             ;; guesed factor
+0010 FB               18             MOV R3, A
+0011 1B               19             DEC R3
+0012 1B               20             DEC R3
+0013 E8               21     ISP:    MOV A, R0
+0014 8BF0             22             MOV B, R3
+0016 05F0             23             INC B
+0018 84               24             DIV AB
+                      25             ;; detect if remainder is 0
+0019 C5F0             26             XCH A, B
+001B 4400             27             ORL A, #00H
+001D 6007             28             JZ ESC
+001F DBF2             29             DJNZ R3, ISP
+0021 E8               30             MOV A, R0
+0022 F580             31             MOV P0, A
+0024 112B             32             CALL DELAY
+0026 08               33     ESC:    INC R0
+0027 D9E6             34             DJNZ R1, NEXT
+                      35     
+0029 80D5             36             SJMP START
+                      37             
+002B 7F07             38     DELAY:  MOV R7, #7
+                      39     
+002D 7E01             40     HERE1:  MOV R6, #1
+002F 7902             41     HERE2:  MOV R1, #2
+0031 D9FE             42     HERE3:  DJNZ R1, HERE3
+0033 DEFC             43             DJNZ R6, HERE3
+0035 DFFA             44             DJNZ R7, HERE3
+0037 22               45             RET
+                      46             END
+                             
+A51 MACRO ASSEMBLER  Q7                                                                   12/17/2023 01:35:53 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+BASE . . . . . . .  N NUMB   0040H   A   
+DELAY. . . . . . .  C ADDR   002BH   A   
+ESC. . . . . . . .  C ADDR   0026H   A   
+HERE1. . . . . . .  C ADDR   002DH   A   
+HERE2. . . . . . .  C ADDR   002FH   A   
+HERE3. . . . . . .  C ADDR   0031H   A   
+ISP. . . . . . . .  C ADDR   0013H   A   
+NEXT . . . . . . .  C ADDR   000FH   A   
+NNUM . . . . . . .  C ADDR   0006H   A   
+NUMS . . . . . . .  N NUMB   0020H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+PRIME. . . . . . .  C ADDR   000BH   A   
+START. . . . . . .  C ADDR   0000H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
