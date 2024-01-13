@@ -1,0 +1,126 @@
+A51 MACRO ASSEMBLER  COUNTER9_ASM                                                         01/13/2024 02:04:23 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\counter9-asm.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE counter9-asm.asm SET(SMALL) DEBUG PRINT(.\Listings\counter9-asm.lst) OB
+                      JECT(.\Objects\counter9-asm.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+                       2     
+0000 75203F            3     MOV 20H, #03FH
+0003 752106            4     MOV 21H, #006H
+0006 75225B            5     MOV 22H, #05BH
+0009 75234F            6     MOV 23H, #04FH
+000C 752466            7     MOV 24H, #066H
+000F 75256D            8     MOV 25H, #06DH
+0012 75267D            9     MOV 26H, #07DH
+0015 752707           10     MOV 27H, #007H
+0018 75287F           11     MOV 28H, #07FH
+001B 75296F           12     MOV 29H, #06FH
+                      13     
+001E 74FF             14     MOV A, #0FFH
+0020                  15     INCREASING:
+0020 04               16     INC A
+0021 12002F           17     LCALL DISPLAY_NUMBER
+0024 B414F9           18     CJNE A, #014H, INCREASING
+                      19     
+0027                  20     DECREASING:
+0027 14               21     DEC A
+0028 12002F           22     LCALL DISPLAY_NUMBER
+002B 70FA             23     JNZ DECREASING
+002D 80F1             24     JMP INCREASING
+                      25     
+                      26     
+002F                  27     DISPLAY_NUMBER:
+002F FB               28     MOV R3, A
+0030 7930             29     MOV R1, #30H
+0032 120058           30     LCALL EXTRACT_DIGITS
+0035 EC               31     MOV A, R4
+0036 FD               32     MOV R5, A
+                      33     
+0037 7FFF             34     MOV R7, #0FFH
+0039                  35     INNER:
+0039 7930             36     MOV R1, #30H
+003B 7A08             37     MOV R2, #08H
+                      38     
+003D                  39     NEXT_DIGIT:
+003D 7820             40     MOV R0, #20H
+                      41     
+003F E7               42     MOV A, @R1
+0040 28               43     ADD A, R0
+0041 F8               44     MOV R0, A
+0042 09               45     INC R1
+                      46     
+0043 75A000           47     MOV P2, #0
+0046 8680             48     MOV P0, @R0
+0048 8AA0             49     MOV P2, R2
+                      50     
+004A 120065           51     LCALL DELAY
+                      52     
+004D EA               53     MOV A, R2
+004E 03               54     RR A
+004F FA               55     MOV R2, A
+                      56     
+0050 DCEB             57     DJNZ R4, NEXT_DIGIT
+A51 MACRO ASSEMBLER  COUNTER9_ASM                                                         01/13/2024 02:04:23 PAGE     2
+
+0052 ED               58     MOV A, R5
+0053 FC               59     MOV R4, A
+                      60     
+0054 DFE3             61     DJNZ R7, INNER
+                      62     
+0056 EB               63     MOV A, R3
+0057 22               64     RET
+                      65     
+                      66     
+0058                  67     EXTRACT_DIGITS:
+0058 7C00             68     MOV R4, #0H
+                      69     
+005A                  70     EXTRACT_NEXT_DIGIT:
+005A 75F00A           71     MOV B, #0AH
+005D 84               72     DIV AB
+                      73     
+005E A7F0             74     MOV @R1, B
+0060 09               75     INC R1
+0061 0C               76     INC R4
+                      77     
+0062 70F6             78     JNZ EXTRACT_NEXT_DIGIT
+0064 22               79     RET
+                      80     
+                      81     
+0065                  82     DELAY:
+0065 7EFF             83     MOV R6, #0FFH
+0067                  84     AGAIN:
+0067 DEFE             85     DJNZ R6, AGAIN
+0069 22               86     RET
+                      87     
+                      88     END
+A51 MACRO ASSEMBLER  COUNTER9_ASM                                                         01/13/2024 02:04:23 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN. . . . . . .  C ADDR   0067H   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+DECREASING . . . .  C ADDR   0027H   A   
+DELAY. . . . . . .  C ADDR   0065H   A   
+DISPLAY_NUMBER . .  C ADDR   002FH   A   
+EXTRACT_DIGITS . .  C ADDR   0058H   A   
+EXTRACT_NEXT_DIGIT  C ADDR   005AH   A   
+INCREASING . . . .  C ADDR   0020H   A   
+INNER. . . . . . .  C ADDR   0039H   A   
+NEXT_DIGIT . . . .  C ADDR   003DH   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
