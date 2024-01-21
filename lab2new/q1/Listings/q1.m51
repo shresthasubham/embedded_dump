@@ -1,0 +1,107 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    01/20/2024  14:34:46  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\counter9.obj TO .\Objects\q1 PRINT (.\Listings\q1.m51) CODE (0X0000-0X0FFF)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\counter9.obj (COUNTER9)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\q1 (COUNTER9)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000AH     UNIT         ?DT?COUNTER9
+            IDATA   0012H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     002BH     UNIT         ?PR?_DELAY?COUNTER9
+            CODE    08B7H     001AH     UNIT         ?PR?MAIN?COUNTER9
+            CODE    08D1H     000DH     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\q1 (COUNTER9)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?COUNTER9
+  +--> ?C_INITSEG
+
+?PR?MAIN?COUNTER9
+  +--> ?PR?_DELAY?COUNTER9
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\q1 (COUNTER9)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        COUNTER9
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:00A0H         PUBLIC        P2
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2024  14:34:46  PAGE 2
+
+
+  C:0897H         PUBLIC        _delay
+  C:08B7H         PUBLIC        main
+  D:0008H         PUBLIC        d
+  -------         PROC          L?0019
+  -------         ENDPROC       L?0019
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        i
+  -------         DO            
+  D:0004H         SYMBOL        j
+  D:0002H         SYMBOL        k
+  -------         ENDDO         
+  C:0897H         LINE#         5
+  C:0897H         LINE#         7
+  C:08A1H         LINE#         8
+  C:08B6H         LINE#         9
+  -------         ENDPROC       _DELAY
+  -------         PROC          MAIN
+  -------         DO            
+  D:0001H         SYMBOL        i
+  -------         ENDDO         
+  C:08B7H         LINE#         11
+  C:08B7H         LINE#         12
+  C:08B7H         LINE#         14
+  C:08BAH         LINE#         15
+  C:08BAH         LINE#         16
+  C:08BCH         LINE#         17
+  C:08BCH         LINE#         18
+  C:08BCH         LINE#         19
+  C:08BFH         LINE#         20
+  C:08C3H         LINE#         21
+  C:08CBH         LINE#         22
+  C:08CBH         LINE#         23
+  C:08CBH         LINE#         24
+  C:08CEH         LINE#         25
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        COUNTER9
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0051H BYTE ( 3%) *
+******************************************************************************
+
+Program Size: data=19.0 xdata=0 code=225
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

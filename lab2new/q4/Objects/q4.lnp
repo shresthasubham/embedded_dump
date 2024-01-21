@@ -1,0 +1,3 @@
+".\Objects\mul-table.obj" 
+TO ".\Objects\q4" 
+PRINT(".\Listings\q4.m51") CODE( 0X0000-0X0FFF )

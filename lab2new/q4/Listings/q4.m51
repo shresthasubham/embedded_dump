@@ -1,0 +1,188 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    01/20/2024  15:15:49  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\mul-table.obj TO .\Objects\q4 PRINT (.\Listings\q4.m51) CODE (0X0000-0X0FFF)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\mul-table.obj (MUL_TABLE)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?CSTOPTR)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?UIDIV)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?ULCMP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\q4 (MUL_TABLE)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0016H     UNIT         _DATA_GROUP_
+            DATA    001EH     000EH     UNIT         ?DT?MUL_TABLE
+            IDATA   002CH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     0088H     UNIT         ?C?LIB_CODE
+            CODE    0914H     0074H     UNIT         ?PR?_DELAY?MUL_TABLE
+            CODE    0988H     006CH     UNIT         ?PR?_DISPLAY_NUMBER?MUL_TABLE
+            CODE    09F4H     004AH     UNIT         ?PR?_CONVERT_TO_BCD4?MUL_TABLE
+            CODE    0A3EH     0028H     UNIT         ?PR?MAIN?MUL_TABLE
+            CODE    0A66H     0013H     UNIT         ?C_INITSEG
+            CODE    0A79H     0012H     UNIT         ?PR?_GENERATE_MUL_TABLE?MUL_TABLE
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\q4 (MUL_TABLE)
+
+
+SEGMENT                                     DATA_GROUP 
+  +--> CALLED SEGMENT                     START    LENGTH
+---------------------------------------------------------
+?C_C51STARTUP                             -----    -----
+  +--> ?PR?MAIN?MUL_TABLE
+  +--> ?C_INITSEG
+
+?PR?MAIN?MUL_TABLE                        0008H    0001H
+  +--> ?PR?_GENERATE_MUL_TABLE?MUL_TABLE
+  +--> ?PR?_DISPLAY_NUMBER?MUL_TABLE
+
+?PR?_DISPLAY_NUMBER?MUL_TABLE             0009H    0009H
+  +--> ?PR?_CONVERT_TO_BCD4?MUL_TABLE
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2024  15:15:49  PAGE 2
+
+
+  +--> ?PR?_DELAY?MUL_TABLE
+
+?PR?_CONVERT_TO_BCD4?MUL_TABLE            0012H    0006H
+
+?PR?_DELAY?MUL_TABLE                      0012H    000CH
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\q4 (MUL_TABLE)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MUL_TABLE
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:00A0H         PUBLIC        P2
+  C:09F4H         PUBLIC        _convert_to_bcd4
+  C:0914H         PUBLIC        _delay
+  C:0A3EH         PUBLIC        main
+  C:0988H         PUBLIC        _display_number
+  C:0A79H         PUBLIC        _generate_mul_table
+  D:001EH         SYMBOL        decimal_to_7seg
+  D:0028H         SYMBOL        display_control_bits
+  -------         PROC          _DELAY
+  D:0012H         SYMBOL        amount
+  -------         DO            
+  D:0016H         SYMBOL        i
+  D:001AH         SYMBOL        j
+  -------         ENDDO         
+  C:0914H         LINE#         12
+  C:091CH         LINE#         14
+  C:093BH         LINE#         15
+  C:0970H         LINE#         16
+  C:0987H         LINE#         17
+  -------         ENDPROC       _DELAY
+  -------         PROC          _CONVERT_TO_BCD4
+  D:0012H         SYMBOL        n
+  D:0014H         SYMBOL        digits
+  -------         DO            
+  D:0017H         SYMBOL        n_digits
+  -------         ENDDO         
+  C:09F4H         LINE#         19
+  C:09FEH         LINE#         20
+  C:0A01H         LINE#         21
+  C:0A01H         LINE#         22
+  C:0A21H         LINE#         23
+  C:0A30H         LINE#         24
+  C:0A3BH         LINE#         26
+  C:0A3DH         LINE#         27
+  -------         ENDPROC       _CONVERT_TO_BCD4
+  -------         PROC          _DISPLAY_NUMBER
+  D:0006H         SYMBOL        n
+  -------         DO            
+  D:0006H         SYMBOL        i
+  D:0009H         SYMBOL        j
+  D:000BH         SYMBOL        k
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2024  15:15:49  PAGE 3
+
+
+  D:000DH         SYMBOL        digits
+  D:0011H         SYMBOL        n_digits
+  -------         ENDDO         
+  C:0988H         LINE#         29
+  C:0988H         LINE#         33
+  C:0993H         LINE#         35
+  C:0998H         LINE#         36
+  C:09A8H         LINE#         37
+  C:09ABH         LINE#         38
+  C:09B7H         LINE#         39
+  C:09C2H         LINE#         40
+  C:09CAH         LINE#         42
+  C:09D8H         LINE#         43
+  C:09E2H         LINE#         44
+  C:09F3H         LINE#         45
+  -------         ENDPROC       _DISPLAY_NUMBER
+  -------         PROC          _GENERATE_MUL_TABLE
+  D:0007H         SYMBOL        n
+  -------         DO            
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:0A79H         LINE#         47
+  C:0A79H         LINE#         49
+  C:0A7BH         LINE#         50
+  C:0A86H         LINE#         51
+  C:0A8AH         LINE#         52
+  -------         ENDPROC       _GENERATE_MUL_TABLE
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        i
+  -------         ENDDO         
+  C:0A3EH         LINE#         54
+  C:0A3EH         LINE#         57
+  C:0A42H         LINE#         58
+  C:0A47H         LINE#         60
+  C:0A4AH         LINE#         61
+  C:0A4CH         LINE#         62
+  C:0A4CH         LINE#         63
+  C:0A4FH         LINE#         64
+  C:0A5BH         LINE#         65
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MUL_TABLE
+
+  -------         MODULE        ?C?CSTOPTR
+  C:088CH         PUBLIC        ?C?CSTOPTR
+  -------         ENDMOD        ?C?CSTOPTR
+
+  -------         MODULE        ?C?UIDIV
+  C:08AEH         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+  -------         MODULE        ?C?ULCMP
+  C:0903H         PUBLIC        ?C?ULCMP
+  -------         ENDMOD        ?C?ULCMP
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0176H BYTE (18%) *
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/20/2024  15:15:49  PAGE 4
+
+
+******************************************************************************
+
+Program Size: data=45.0 xdata=0 code=654
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
