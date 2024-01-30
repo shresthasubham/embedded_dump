@@ -1,3 +1,0 @@
-".\Objects\Cone.obj" 
-TO ".\Objects\q1" 
-PRINT(".\Listings\q1.m51") CODE( 0X0000-0X0FFF )
