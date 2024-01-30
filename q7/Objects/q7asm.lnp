@@ -1,3 +1,0 @@
-".\Objects\q7.obj" 
-TO ".\Objects\q7asm" 
-PRINT(".\Listings\q7asm.m51") CODE( 0X0000-0X0FFF )
