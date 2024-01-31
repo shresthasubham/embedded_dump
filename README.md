@@ -1,1 +1,1 @@
-Include Lab code of Embedded System (C and assembly of 8051)
+Lab code of Embedded System Design (C and assembly of 8051)
